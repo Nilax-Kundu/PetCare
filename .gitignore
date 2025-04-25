@@ -1,0 +1,19 @@
+# Ignore Python virtual environments
+venv/
+.env
+
+# Node modules (if you have any)
+node_modules/
+
+# OS and IDE stuff
+.DS_Store
+*.log
+*.pyc
+__pycache__/
+.vscode/
+
+# Environment & config
+.env
+*.env
+*.secret
+config.json

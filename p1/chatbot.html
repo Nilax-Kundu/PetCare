@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Care Assistant - Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="container">
+            <h1>PetCare Assistant</h1>
+            <nav>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="chatbot.html" class="active">Pet Care Assistant</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="light-icon">🌞</span>
+                <span class="dark-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+<br>
+    <main class="container">
+        <section class="chatbot-container">
+            <div class="chat-header">
+                <h2>Ask for Pet Care Tips</h2>
+                <p>Our assistant can help with basic pet care questions about dogs, cats, birds, and more!</p>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I'm your Pet Care Assistant. How can I help you today? Try asking about feeding, grooming, or health tips for your pet!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your question here...">
+                <button id="send-btn">Send</button>
+            </div>
+            
+            <div class="chat-suggestions">
+                <p>Try asking:</p>
+                <button class="suggestion-btn">How often should I feed my dog?</button>
+                <button class="suggestion-btn">Cat grooming tips</button>
+                <button class="suggestion-btn">Signs my pet is sick</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pet Care Assistant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatMessages = document.getElementById('chat-messages');
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.getElementById('send-btn');
+            const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+            
+            // Pet care knowledge base
+            const petCareResponses = {
+                dog: {
+                    feed: "Most adult dogs should be fed twice a day. Puppies under 6 months might need 3-4 smaller meals. Always provide fresh water!",
+                    walk: "Dogs should be walked at least once or twice daily, depending on breed, age, and energy level. Active breeds need more exercise.",
+                    groom: "Regular brushing (2-3 times a week) helps reduce shedding. Bathing frequency depends on breed and activity level, typically every 1-3 months.",
+                    train: "Start training puppies as early as 8 weeks. Use positive reinforcement and keep sessions short (5-10 minutes) and fun."
+                },
+                cat: {
+                    feed: "Adult cats typically need to be fed twice a day. Some prefer grazing throughout the day. Ensure they always have fresh water.",
+                    litter: "Clean the litter box daily and change the litter completely once a week. Most cats prefer unscented clumping litter.",
+                    groom: "Most cats groom themselves, but long-haired breeds benefit from brushing 2-3 times a week to prevent matting and reduce hairballs.",
+                    play: "Cats need daily play to stay mentally and physically healthy. Interactive toys like feather wands or laser pointers are great options."
+                },
+                general: {
+                    vet: "Pets should have a wellness check-up at least once a year. Puppies and kittens need more frequent visits for vaccinations.",
+                    sick: "Signs your pet might be sick include changes in appetite, water consumption, energy levels, unusual behavior, vomiting, or diarrhea.",
+                    new: "When bringing a new pet home, give them time to adjust. Create a safe space with food, water, and bedding, and gradually introduce them to new areas."
+                }
+            };
+            
+            function addMessage(message, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = isUser ? 'message user' : 'message bot';
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.textContent = message;
+                
+                messageDiv.appendChild(messageContent);
+                chatMessages.appendChild(messageDiv);
+                
+                // Auto scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+            }
+            
+            function getBotResponse(userMessage) {
+                userMessage = userMessage.toLowerCase();
+                
+                // Check for dog-related queries
+                if (userMessage.includes('dog') && userMessage.includes('feed')) {
+                    return petCareResponses.dog.feed;
+                } else if ((userMessage.includes('dog') && userMessage.includes('walk')) || 
+                           (userMessage.includes('dog') && userMessage.includes('exercise'))) {
+                    return petCareResponses.dog.walk;
+                } else if (userMessage.includes('dog') && (userMessage.includes('groom') || userMessage.includes('brush') || userMessage.includes('bath'))) {
+                    return petCareResponses.dog.groom;
+                } else if (userMessage.includes('dog') && userMessage.includes('train')) {
+                    return petCareResponses.dog.train;
+                }
+                
+                // Check for cat-related queries
+                else if (userMessage.includes('cat') && userMessage.includes('feed')) {
+                    return petCareResponses.cat.feed;
+                } else if (userMessage.includes('cat') && (userMessage.includes('litter') || userMessage.includes('box'))) {
+                    return petCareResponses.cat.litter;
+                } else if (userMessage.includes('cat') && (userMessage.includes('groom') || userMessage.includes('brush'))) {
+                    return petCareResponses.cat.groom;
+                } else if (userMessage.includes('cat') && userMessage.includes('play')) {
+                    return petCareResponses.cat.play;
+                }
+                
+                // Check for general pet care queries
+                else if (userMessage.includes('vet') || userMessage.includes('doctor') || userMessage.includes('checkup')) {
+                    return petCareResponses.general.vet;
+                } else if (userMessage.includes('sick') || userMessage.includes('ill') || userMessage.includes('health')) {
+                    return petCareResponses.general.sick;
+                } else if (userMessage.includes('new pet') || userMessage.includes('adopt')) {
+                    return petCareResponses.general.new;
+                }
+                
+                // Default response
+                else {
+                    return "I'm not sure about that. Try asking about feeding, grooming, or health tips for dogs or cats!";
+                }
+            }
+            
+            function handleUserInput() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message
+                addMessage(message, true);
+                userInput.value = '';
+                
+                // Simulate typing delay
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    addMessage(botResponse, false);
+                }, 500);
+            }
+            
+            // Event listeners
+            sendBtn.addEventListener('click', handleUserInput);
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleUserInput();
+                }
+            });
+            
+            // Suggestion buttons
+            suggestionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    userInput.value = this.textContent;
+                    handleUserInput();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

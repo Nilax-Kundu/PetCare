@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Care Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="light-mode">
+    <header>
+        <div class="container">
+            <h1>PetCare Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Blog</a></li>
+                    <li><a href="chatbot.html">Pet Care Assistant</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="light-icon">🌞</span>
+                <span class="dark-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="featured-post">
+            <h2>Featured Post</h2>
+            <article>
+                <img src="dog.png" alt="Dog playing in the park">
+                <h3>Essential Tips for New Dog Owners</h3>
+                <p class="date">April 15, 2025</p>
+                <p>Bringing a new dog home is exciting but can also be overwhelming. Here are some essential tips to help you and your new furry friend adjust to life together.</p>
+                <a href="dog.html" class="read-more">Read More</a>
+            </article>
+        </section>
+
+        <section class="blog-posts">
+            <h2>Recent Posts</h2>
+            <div class="post-grid">
+                <article>
+                    <img src="cat.png" alt="Cat grooming">
+                    <h3>Cat Grooming 101</h3>
+                    <p class="date">April 10, 2025</p>
+                    <p>Learn the basics of cat grooming to keep your feline friend healthy and happy.</p>
+                    <a href="cat-gromming-101.html" class="read-more">Read More</a>
+                </article>
+                <article>
+                    <img src="fish.jpeg" alt="Fish tank">
+                    <h3>Setting Up Your First Aquarium</h3>
+                    <p class="date">April 5, 2025</p>
+                    <p>A step-by-step guide to setting up a healthy environment for your aquatic pets.</p>
+                    <a href="fish.html" class="read-more">Read More</a>
+                </article>
+                <article>
+                    <img src="rabbit.png" alt="Rabbit eating vegetables">
+                    <h3>Nutrition Guide for Pet Rabbits</h3>
+                    <p class="date">March 28, 2025</p>
+                    <p>Everything you need to know about feeding your pet rabbit a balanced diet.</p>
+                    <a href="rabbit.html" class="read-more">Read More</a>
+                </article>
+                <article>
+                    <img src="train.png" alt="Dog training">
+                    <h3>Basic Dog Training Commands</h3>
+                    <p class="date">March 20, 2025</p>
+                    <p>Master these five essential commands to build a strong foundation for your dog's training.</p>
+                    <a href="train.html" class="read-more">Read More</a>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <div style="text-align: center; margin: 2em 0;">
+        <button 
+            onclick="window.location.href='../index.php'" 
+            aria-label="Go to homepage"
+            style="
+                background-color: #6a0dad;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            "
+            onmouseover="this.style.backgroundColor='#5800a1'"
+            onmouseout="this.style.backgroundColor='#6a0dad'"
+        >
+            &#8592;
+        </button>
+    </div>
+    
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pet Care Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

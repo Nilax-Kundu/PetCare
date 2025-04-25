@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Care FAQ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="container">
+            <h1>PetCare FAQ</h1>
+            <nav>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="chatbot.html">Pet Care Assistant</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="light-icon">🌞</span>
+                <span class="dark-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="faq-section">
+            <br>
+            
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="dogs">Dogs</button>
+                <button class="category-btn" data-category="cats">Cats</button>
+                <button class="category-btn" data-category="general">General</button>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item" data-category="dogs">
+                    <div class="faq-question">
+                        <h3>How often should I feed my dog?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most adult dogs should be fed twice a day, once in the morning and once in the evening. Puppies under 6 months of age may need to be fed 3-4 times a day. The amount of food depends on your dog's size, age, breed, and activity level. Always follow the feeding guidelines on your dog food packaging and consult with your veterinarian for specific recommendations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="dogs">
+                    <div class="faq-question">
+                        <h3>How often should I walk my dog?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most dogs need at least one or two walks daily, but this varies by breed, age, and energy level. High-energy breeds like Border Collies or Huskies may need several hours of exercise daily, while lower-energy breeds like Bulldogs may be satisfied with shorter walks. Senior dogs may need shorter, more frequent walks. In addition to physical exercise, dogs also need mental stimulation through play and training.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="cats">
+                    <div class="faq-question">
+                        <h3>How often should I clean my cat's litter box?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Litter boxes should be scooped at least once daily, and the litter should be completely changed once a week. If you have multiple cats, you may need to clean more frequently. A good rule of thumb is to have one more litter box than the number of cats in your household. Regular cleaning helps prevent odor and encourages your cat to use the litter box consistently.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="cats">
+                    <div class="faq-question">
+                        <h3>Do cats need baths?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most cats are excellent self-groomers and don't need regular baths. However, there are exceptions: long-haired breeds may need occasional baths to prevent matting, and cats with certain health conditions or mobility issues may need help staying clean. If your cat gets into something sticky or smelly, a bath might be necessary. Use cat-specific shampoo and make the experience as stress-free as possible.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <h3>How often should I take my pet to the vet?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Adult dogs and cats should visit the veterinarian at least once a year for a wellness check-up. Puppies and kittens need more frequent visits for vaccinations and health monitoring, typically every 3-4 weeks until they're about 16 weeks old. Senior pets (generally over 7 years for dogs, over 10 for cats) benefit from twice-yearly check-ups. Always take your pet to the vet if you notice any concerning symptoms or changes in behavior.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <h3>How can I tell if my pet is sick?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Common signs of illness in pets include changes in appetite (eating more or less than usual), increased thirst, lethargy, vomiting, diarrhea, coughing, sneezing, difficulty breathing, changes in urination habits, and unusual behavior. You know your pet best, so any significant change from their normal behavior could indicate a problem. When in doubt, consult with your veterinarian.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <h3>What should I do if my pet eats something toxic?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you suspect your pet has ingested something toxic, contact your veterinarian or an animal poison control center immediately. Common household toxins for pets include chocolate, xylitol (found in sugar-free gum and some peanut butters), grapes/raisins, onions, garlic, certain plants, and many medications. Don't wait for symptoms to appear, as prompt treatment is crucial. Try to identify what and how much your pet consumed to help the veterinarian determine the best course of action.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pet Care FAQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Toggle active class on the question
+                    this.classList.toggle('active');
+                    
+                    // Toggle the answer visibility
+                    const answer = this.nextElementSibling;
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        this.querySelector('.toggle-icon').textContent = '+';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        this.querySelector('.toggle-icon').textContent = '−';
+                    }
+                });
+            });
+            
+            // FAQ search functionality
+            const searchInput = document.getElementById('faq-search');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // FAQ category filtering
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
